@@ -12,7 +12,6 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const cartItems = useSelector((state) => state.cart);
-  console.log(cartItems);
 
   const deleteCart = (item) => {
     dispatch(deleteFromCart(item));
@@ -39,12 +38,10 @@ const Cart = () => {
       temp = temp + parseInt(cartItem.price);
     });
     setTotalAmount(temp);
-    console.log(temp);
   }, [cartItems]);
 
   const shipping = parseInt(5);
   const grandTotal = shipping + totalAmount;
-  console.log(grandTotal);
 
   // for payment integration
 
@@ -55,20 +52,20 @@ const Cart = () => {
 
   return (
     <Layout>
-      <div className="h-screen bg-gray-100 pt-5 mb-[10%] ">
-        <h1 className="product-container mb-10 text-center text-2xl font-bold">
+      <div className=" h-screen bg-gray-100 pt-5 mb-10 overflow-scroll ">
+        <h1 className="product-container  mb-10 text-center text-2xl font-bold">
           Cart Items
         </h1>
 
-        <div className="mx-auto max-w-5xl bg- justify-center px-6 md:flex md:space-x-6 xl:px-0 ">
+        <div className=" mx-auto max-w-5xl bg-justify-center px-6  md:flex md:space-x-6 xl:px-0 ">
           {/* product section */}
-          <div className="rounded md:w-2/3 ">
+          <div className="rounded  md:w-2/3 ">
             {cartItems.map((item, index) => {
               const { title, price, imageUrl, description } = item;
               return (
                 <div
                   key={index}
-                  className="justify-between mb-2  border-t border-b border-[#e4e4e4]  shadow-xl bg-white p-4  sm:flex  sm:justify-start"
+                  className="justify-between mb-2  border-t border-b border-[#e4e4e4]  hover:shadow-md bg-white p-4  sm:flex  sm:justify-start"
                 >
                   <img
                     src={imageUrl}
@@ -110,7 +107,7 @@ const Cart = () => {
             })}
           </div>
           {/* checkout section  */}
-          <div className="mt-6 h-full  border-l border-r border-[#e4e4e4] bg-white p-8 shadow md:mt-0 md:w-1/3">
+          <div className=" mt-6 h-full  border-l border-r border-[#e4e4e4] bg-white p-8 shadow md:mt-0 md:w-1/3">
             <p className="text-center uppercase mb-8 text-[25px] font-bold text-[#333333]">
               Cart Total
             </p>
@@ -130,6 +127,11 @@ const Cart = () => {
               <div className>
                 <p className="mb-1 text-lg  text-gray-800">${grandTotal} </p>
               </div>
+            </div>
+            <div className="flex items-center justify-center">
+              <button className="bg-[#717fe0] text-white text-[20px] hover:scale-95 transition-all p-2">
+                Buy Now
+              </button>
             </div>
             {/* <Modal  /> */}
             {/* <Modal

@@ -1,21 +1,18 @@
-// import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const navbar = () => {
   const user = JSON.parse(localStorage.getItem("user"));
-  // console.log(user.user.email);
 
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  console.log(isOpen);
 
   const logout = () => {
     localStorage.removeItem("user");
-    // console.log("the user has logged out ");
+
     window.location.href = "/login";
   };
 
@@ -28,9 +25,9 @@ const navbar = () => {
           {" "}
           <div className="h-[90px] w-[120px] flex items-center justify-center">
             <p className="text-2xl font-semibold text-black">
-              WARD
+              STYLE
               <span className="text-[#717fe0] font-semibold text-2xl">
-                ROBE
+                CLUB
               </span>
             </p>
           </div>

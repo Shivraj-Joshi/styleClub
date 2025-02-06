@@ -1,7 +1,34 @@
 import React from "react";
 import Layout from "../../components/layout/Layout";
+import Swal from "sweetalert2";
 
 const ContactUs = () => {
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "f40bc0ca-5f01-4896-b4c7-b9cb8c3c3e9b");
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    }).then((res) => res.json());
+
+    if (res.success) {
+      Swal.fire({
+        title: "Good job!",
+        text: "You clicked the button!",
+        icon: "success",
+      });
+    }
+  };
   return (
     <>
       <Layout>
@@ -26,7 +53,7 @@ const ContactUs = () => {
             {/* form sumbimtion */}
 
             <div className="form h-[450px] w-full py-6 px-4 ">
-              <form className="bg-white  px-8 px-4 py-6 ">
+              <form onSubmit={onSubmit} className="bg-white  px-8 px-4 py-6 ">
                 <div className="mb-4">
                   <label
                     htmlFor="username"
