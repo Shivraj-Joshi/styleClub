@@ -29,6 +29,8 @@ const myData = (props) => {
       year: "numeric",
     }),
   });
+
+  // function to add a new product by admin
   const addProduct = async () => {
     if (
       products.title == null ||

@@ -42,7 +42,7 @@ const navbar = () => {
           </li>
           <li className="cursor-pointer hover:text-[#717fe0] ">
             <NavLink
-              to="products"
+              to="/products"
               className={({ isActive }) =>
                 isActive ? "text-[#717fe0]" : "text-black"
               }
@@ -52,7 +52,7 @@ const navbar = () => {
           </li>
           <li className="cursor-pointer hover:text-[#717fe0] ">
             <NavLink
-              to="about"
+              to="/about"
               className={({ isActive }) =>
                 isActive ? "text-[#717fe0]" : "text-black"
               }
@@ -62,7 +62,7 @@ const navbar = () => {
           </li>
           <li className="cursor-pointer hover:text-[#717fe0] ">
             <NavLink
-              to="contact"
+              to="/contact"
               className={({ isActive }) =>
                 isActive ? "text-[#717fe0]" : "text-black"
               }

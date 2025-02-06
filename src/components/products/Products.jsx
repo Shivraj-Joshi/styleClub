@@ -3,7 +3,6 @@ import myContext from "../../context/myContext";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/CartSlice";
 import { toast } from "react-toastify";
-// import myContext from "../../../context/myContext";
 
 const Products = () => {
   const { product } = useContext(myContext);
@@ -11,6 +10,8 @@ const Products = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart);
   console.log(cartItems);
+
+  // function to add products to cart
 
   const addCart = (product) => {
     dispatch(addToCart(product));
