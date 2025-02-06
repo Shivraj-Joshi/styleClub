@@ -3,6 +3,8 @@ import myContext from "../../context/myContext";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFromCart } from "../../redux/CartSlice";
 import { toast } from "react-toastify";
+import Layout from "../../components/layout/Layout";
+// import Modal from "../../components/modal/Modal";
 
 const Cart = () => {
   const context = useContext(myContext);
@@ -14,7 +16,16 @@ const Cart = () => {
 
   const deleteCart = (item) => {
     dispatch(deleteFromCart(item));
-    toast.success("Item Deleted Successfully");
+    toast.success("Item Deleted Successfully", {
+      position: "bottom-right",
+      autoClose: 800,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
@@ -35,8 +46,15 @@ const Cart = () => {
   const grandTotal = shipping + totalAmount;
   console.log(grandTotal);
 
+  // for payment integration
+
+  // const [name, setName] = useState("");
+  // const [address, setAddress] = useState("");
+  // const [pincode, setPincode] = useState("");
+  // const [phoneNumber, setPhoneNumber] = useState("");
+
   return (
-    <div>
+    <Layout>
       <div className="h-screen bg-gray-100 pt-5 mb-[10%] ">
         <h1 className="product-container mb-10 text-center text-2xl font-bold">
           Cart Items
@@ -44,32 +62,32 @@ const Cart = () => {
 
         <div className="mx-auto max-w-5xl bg- justify-center px-6 md:flex md:space-x-6 xl:px-0 ">
           {/* product section */}
-          <div className="rounded-lg md:w-2/3 ">
+          <div className="rounded md:w-2/3 ">
             {cartItems.map((item, index) => {
               const { title, price, imageUrl, description } = item;
               return (
                 <div
                   key={index}
-                  className="justify-between mb-6 rounded-lg border  drop-shadow-xl bg-white p-6  sm:flex  sm:justify-start"
+                  className="justify-between mb-2  border-t border-b border-[#e4e4e4]  shadow-xl bg-white p-4  sm:flex  sm:justify-start"
                 >
                   <img
                     src={imageUrl}
                     alt="product-image"
-                    className="w-full rounded-lg sm:w-40"
+                    className="w-full h-[120px] object-contain sm:w-40"
                   />
                   <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                     <div className="mt-5 sm:mt-0">
-                      <h2 className="text-lg font-bold text-gray-900">
+                      <h2 className="text-lg font-bold text-gray-900 ">
                         {title}
                       </h2>
-                      <h2 className="text-sm  text-gray-900">{description}</h2>
+                      <h2 className="text-sm  text-gray-900 ">{description}</h2>
                       <p className="mt-1 text-xs font-semibold text-gray-700">
                         ${price}
                       </p>
                     </div>
                     <div
                       onClick={() => deleteCart(item)}
-                      className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6"
+                      className="mt-4 flex justify-between  sm:space-y-6 sm:mt-0 sm:block sm:space-x-6"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +95,7 @@ const Cart = () => {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="w-6 h-6"
+                        className="w-6 h-6 cursor-pointer hover:text-red-500"
                       >
                         <path
                           strokeLinecap="round"
@@ -92,9 +110,12 @@ const Cart = () => {
             })}
           </div>
           {/* checkout section  */}
-          <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
-            <div className="mb-2 flex justify-between">
-              <p className="text-gray-700 uppercase ">Subtotal</p>
+          <div className="mt-6 h-full  border-l border-r border-[#e4e4e4] bg-white p-8 shadow md:mt-0 md:w-1/3">
+            <p className="text-center uppercase mb-8 text-[25px] font-bold text-[#333333]">
+              Cart Total
+            </p>
+            <div className="mb-6 flex justify-between">
+              <p className="text-gray-700 captalized ">Subtotal</p>
               <p className="text-gray-700">${totalAmount}</p>
             </div>
             <div className="flex justify-between">
@@ -103,27 +124,29 @@ const Cart = () => {
             </div>
             <hr className="my-4" />
             <div className="flex justify-between mb-3">
-              <p className="text-lg font-semibold uppercase">Total</p>
+              <p className="text-lg font-semibold capitalized text-[#333333]">
+                Total
+              </p>
               <div className>
-                <p className="mb-1 text-lg  text-green-400">${grandTotal} </p>
+                <p className="mb-1 text-lg  text-gray-800">${grandTotal} </p>
               </div>
             </div>
             {/* <Modal  /> */}
             {/* <Modal
-            name={name}
-            address={address}
-            pincode={pincode}
-            phoneNumber={phoneNumber}
-            setName={setName}
-            setAddress={setAddress}
-            setPincode={setPincode}
-            setPhoneNumber={setPhoneNumber}
-            buyNow={buyNow}
-          /> */}
+              name={name}
+              address={address}
+              pincode={pincode}
+              phoneNumber={phoneNumber}
+              setName={setName}
+              setAddress={setAddress}
+              setPincode={setPincode}
+              setPhoneNumber={setPhoneNumber}
+              buyNow={buyNow}
+            /> */}
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

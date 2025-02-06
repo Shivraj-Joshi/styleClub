@@ -21,7 +21,7 @@ const DashboardTab = () => {
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 hover:shadow-purple-700 border-purple-500 text-purple-500 rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]  px-5 py-1.5 text-center bg-[#605d5d12] "
+                  className="font-medium border-b hover:cursor-pointer  text-[#333333]  text-xl   px-5 py-1.5 text-center  "
                 >
                   <div className="flex gap-2 items-center">Products</div>{" "}
                 </button>
@@ -29,7 +29,7 @@ const DashboardTab = () => {
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 border-pink-500 bg-[#605d5d12] text-pink-500  hover:shadow-pink-700  rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]    px-5 py-1.5 text-center "
+                  className="font-medium border-b text-[#333333]  hover:cursor-pointer  text-xl    px-5 py-1.5 text-center "
                 >
                   <div className="flex gap-2 items-center">Order</div>
                 </button>
@@ -37,7 +37,7 @@ const DashboardTab = () => {
               <Tab>
                 <button
                   type="button"
-                  className="font-medium border-b-2 border-green-500 bg-[#605d5d12] text-green-500 rounded-lg text-xl  hover:shadow-green-700 shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]   px-5 py-1.5 text-center "
+                  className="font-medium border-b  text-[#333333]  text-xl  hover:cursor-pointer    px-5 py-1.5 text-center "
                 >
                   <div className="flex gap-2 items-center">Users</div>
                 </button>
@@ -53,7 +53,7 @@ const DashboardTab = () => {
                   <button
                     type="button"
                     onClick={add}
-                    className="focus:outline-none text-white bg-pink-600 shadow-[inset_0_0_10px_rgba(0,0,0,0.6)] border hover:bg-pink-700 outline-0 font-medium rounded-lg text-sm px-5 py-2.5 mb-2"
+                    className="focus:outline-none text-[#333333]  border border-[#e4e4e4e4] hover:bg-[#717fe0] hover:text-white transition-all cursor-pointer font-medium  text-xl px-5 py-2.5 mb-4"
                   >
                     {" "}
                     <div className="flex gap-2 items-center">Add Product</div>

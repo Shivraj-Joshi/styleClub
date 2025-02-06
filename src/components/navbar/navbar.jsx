@@ -30,7 +30,7 @@ const navbar = () => {
         </div>
         {/* website Links */}
         <ul className="hidden md:flex gap-10 text-lg  ">
-          <li className="cursor-pointer hover:text-[#717fe0] ">
+          <li className="cursor-pointer text-[14px] uppercase font-semibold ">
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -40,7 +40,7 @@ const navbar = () => {
               Home
             </NavLink>
           </li>
-          <li className="cursor-pointer hover:text-[#717fe0] ">
+          <li className="cursor-pointer text-[14px] uppercase font-semibold ">
             <NavLink
               to="/products"
               className={({ isActive }) =>
@@ -50,7 +50,7 @@ const navbar = () => {
               Shop
             </NavLink>
           </li>
-          <li className="cursor-pointer hover:text-[#717fe0] ">
+          <li className="cursor-pointer text-[14px] uppercase font-semibold ">
             <NavLink
               to="/about"
               className={({ isActive }) =>
@@ -60,7 +60,7 @@ const navbar = () => {
               About
             </NavLink>
           </li>
-          <li className="cursor-pointer hover:text-[#717fe0] ">
+          <li className="cursor-pointer text-[14px] uppercase font-semibold ">
             <NavLink
               to="/contact"
               className={({ isActive }) =>
@@ -74,13 +74,17 @@ const navbar = () => {
         {/* search field */}
         <div className="hidden md:flex gap-2 ">
           <input type="search" placeholder="search" className="px-4" />
-          <button className="p-2 cursor-pointer">search</button>
+          <button className="p-2 cursor-pointer">
+            <i class="ri-search-2-line text-black text-2xl"></i>
+          </button>
         </div>
         {/* order field */}
         {user ? (
           <div className="hidden md:flex gap-2 ">
             <NavLink to="/order">
-              <button className="p-2 cursor-pointer">Order</button>
+              <button className="p-2 cursor-pointer ">
+                <i class="ri-shopping-bag-2-fill text-2xl hover:text-[#717fe0]"></i>
+              </button>
             </NavLink>
           </div>
         ) : (
@@ -90,7 +94,10 @@ const navbar = () => {
         {/* admin field */}
         {user?.user?.email === "iamshivrajjoshi07@gmail.com" ? (
           <NavLink to="/admindashboard">
-            <button className="p-2 cursor-pointer">Admin</button>
+            <button className="p-2 cursor-pointer uppercase font-semibold text-[14px] hover:text-[#717fe0]">
+              Admin
+              <i class="ri-admin-line ml-2 text-2xl "></i>
+            </button>
           </NavLink>
         ) : (
           ""
@@ -100,7 +107,7 @@ const navbar = () => {
         {user ? (
           <div className="hidden md:flex gap-2 ">
             <button onClick={logout} className="p-2 cursor-pointer">
-              Logout
+              <i class="ri-logout-box-r-line text-2xl hover:text-[#ff2020]"></i>
             </button>
           </div>
         ) : (
@@ -121,7 +128,9 @@ const navbar = () => {
         <div className=" hidden md:flex gap-4">
           {/* Cart field */}
           <div className="relative  hover:text-[#717fe0] text-black px-4 h-10 text-2xl">
-            <NavLink to="/cart">cart</NavLink>
+            <NavLink to="/cart">
+              <i class="ri-shopping-cart-2-fill text-2xl"></i>
+            </NavLink>
             <div className="absolute h-5 w-5 top-0 right-0 bg-[#717fe0] flex items-center justify-center rounded-full text-white text-sm  ">
               {cartItems.length}
             </div>

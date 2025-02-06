@@ -15,7 +15,16 @@ const Products = () => {
 
   const addCart = (product) => {
     dispatch(addToCart(product));
-    toast.success("product added to cart");
+    toast.success("product added to cart", {
+      position: "bottom-right",
+      autoClose: 800,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
 
   useEffect(() => {

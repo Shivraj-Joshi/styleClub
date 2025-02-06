@@ -53,14 +53,14 @@ const Footer = () => {
             <div>
               <h3 className="font-bold mb-3">Follow us</h3>
               <ul className="space-y-2 text-gray-400">
-                <li className="hover:text-[#717fe0] cursor-pointer text-2xl">
-                  {/* <i className="ri-facebook-circle-line"></i> */} facebook
+                <li className=" text-2xl">
+                  <i class="ri-facebook-circle-fill hover:text-[#717fe0] cursor-pointer"></i>
                 </li>
-                <li className="hover:text-[#717fe0] cursor-pointer text-2xl">
-                  {/* <i className="ri-instagram-line"></i> */}instagram
+                <li className=" text-2xl">
+                  <i class="ri-instagram-fill hover:text-[#717fe0] cursor-pointer"></i>
                 </li>
-                <li className="hover:text-[#717fe0] cursor-pointer text-2xl">
-                  {/* <i className="ri-twitter-line"></i> */}twitter
+                <li className="  text-2xl">
+                  <i class="ri-twitter-fill cursor-pointer hover:text-[#717fe0]"></i>
                 </li>
                 {/* <li className="hover:text-white cursor-pointer">Formal</li>
                 <li className="hover:text-white cursor-pointer">Casual</li> */}

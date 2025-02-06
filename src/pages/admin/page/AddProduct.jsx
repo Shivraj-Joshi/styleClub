@@ -5,9 +5,11 @@ const AddProduct = () => {
   const { products, setProducts, addProduct } = useContext(myContext);
 
   return (
-    <div className="h-screen flex items-center justify-center">
-      <div className="h-[450px] w-[300px] border border-[#e4e4e4] bg-green-300 flex flex-col items-center justify-center">
-        <h3>Add a New Product</h3>
+    <div className="h-screen bg-slate-300 flex items-center justify-center">
+      <div className="h-[500px] w-[400px] border border-[#e4e4e4] bg-white flex flex-col items-center justify-center">
+        <h3 className="text-[25px] text-[#333333] uppercase font-bold mb-6">
+          Add new Product
+        </h3>
         <div className="flex flex-col w-full items-center justifu-center gap-6 p-4 mb-6">
           <input
             className="border border-[#e4e4e4] p-2 w-full"
@@ -16,7 +18,7 @@ const AddProduct = () => {
             onChange={(e) =>
               setProducts({ ...products, title: e.target.value })
             }
-            placeholder="title "
+            placeholder="Title "
           />
           <input
             className="border border-[#e4e4e4] p-2 w-full"
@@ -52,13 +54,13 @@ const AddProduct = () => {
             onChange={(e) =>
               setProducts({ ...products, description: e.target.value })
             }
-            placeholder="description"
+            placeholder="Description"
           />
         </div>
         <div className="flex items-center justify-center ">
           <button
             onClick={addProduct}
-            className="p-2 bg-[#717fe0] text-white uppercase cursor-pointer"
+            className="p-2 bg-[#717fe0] text-white uppercase cursor-pointer hover:scale-95"
           >
             Add Product
           </button>

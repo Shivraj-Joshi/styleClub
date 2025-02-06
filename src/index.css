@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* Add this to index.css or App.css */
+@import "remixicon/fonts/remixicon.css";
 
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
