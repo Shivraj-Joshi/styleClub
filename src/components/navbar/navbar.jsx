@@ -1,10 +1,17 @@
 // import React, { useEffect } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const navbar = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   // console.log(user.user.email);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+  console.log(isOpen);
 
   const logout = () => {
     localStorage.removeItem("user");
@@ -27,6 +34,11 @@ const navbar = () => {
               </span>
             </p>
           </div>
+        </div>
+
+        {/* hamburgar icon */}
+        <div onClick={toggleMenu} className="md:hidden text-2xl ml-28 ">
+          <i class="ri-menu-line"></i>
         </div>
         {/* website Links */}
         <ul className="hidden md:flex gap-10 text-lg  ">
@@ -94,7 +106,7 @@ const navbar = () => {
         {/* admin field */}
         {user?.user?.email === "iamshivrajjoshi07@gmail.com" ? (
           <NavLink to="/admindashboard">
-            <button className="p-2 cursor-pointer uppercase font-semibold text-[14px] hover:text-[#717fe0]">
+            <button className="hidden md:flex justify-center items-center p-2 cursor-pointer uppercase font-semibold text-[14px] hover:text-[#717fe0]">
               Admin
               <i class="ri-admin-line ml-2 text-2xl "></i>
             </button>
@@ -111,7 +123,7 @@ const navbar = () => {
             </button>
           </div>
         ) : (
-          <p className="text-lg  cursor-pointer">
+          <p className="text-lg hidden md:flex  cursor-pointer">
             {" "}
             <NavLink to="/login">
               <span className="hover:text-[#717fe0]">Login</span>
@@ -137,6 +149,94 @@ const navbar = () => {
           </div>
         </div>
       </div>
+      {/* menu for mobile screen */}
+      {isOpen ? (
+        <ul className="flex-col md:hidden gap-6 mt-18 text-lg text-center  ">
+          <li className="cursor-pointer text-[14px] py-2 uppercase font-semibold ">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "text-[#717fe0]" : "text-black"
+              }
+            >
+              Home
+            </NavLink>
+          </li>
+          <li className="cursor-pointer text-[14px] py-2 uppercase font-semibold ">
+            <NavLink
+              to="/products"
+              className={({ isActive }) =>
+                isActive ? "text-[#717fe0]" : "text-black"
+              }
+            >
+              Shop
+            </NavLink>
+          </li>
+          <li className="cursor-pointer text-[14px] py-2 uppercase font-semibold ">
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                isActive ? "text-[#717fe0]" : "text-black"
+              }
+            >
+              About
+            </NavLink>
+          </li>
+          <li className="cursor-pointer text-[14px] py-2 uppercase font-semibold ">
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                isActive ? "text-[#717fe0]" : "text-black"
+              }
+            >
+              Contact
+            </NavLink>
+          </li>
+          {/* Logout field */}
+          {user ? (
+            <div className="flex md:hidden gap-2 justify-center ">
+              <button onClick={logout} className="p-2 cursor-pointer">
+                {/* <i class="ri-logout-box-r-line text-2xl hover:text-[#ff2020]"></i> */}{" "}
+                Logout
+              </button>
+            </div>
+          ) : (
+            <p className="text-lg  cursor-pointer">
+              {" "}
+              <NavLink to="/login">
+                <span className="hover:text-[#717fe0]">Login</span>
+              </NavLink>{" "}
+              /{" "}
+              <NavLink to="/signUp">
+                <span className="hover:text-[#717fe0]">SignUp</span>
+              </NavLink>
+            </p>
+          )}
+
+          {user?.user?.email === "iamshivrajjoshi07@gmail.com" ? (
+            <NavLink to="/admindashboard">
+              <button className="md:hidden md:flex justify-center items-center p-2 cursor-pointer uppercase font-semibold text-[14px] hover:text-[#717fe0]">
+                Admin
+                <i class="ri-admin-line ml-2 text-2xl "></i>
+              </button>
+            </NavLink>
+          ) : (
+            ""
+          )}
+
+          <div className=" flex md:hidden justify-center gap-4">
+            {/* Cart field */}
+            <div className="relative  hover:text-[#717fe0] text-black px-4 h-10 text-2xl">
+              <NavLink to="/cart">
+                <i class="ri-shopping-cart-2-fill text-2xl"></i>
+              </NavLink>
+              <div className="absolute h-5 w-5 top-0 right-0 bg-[#717fe0] flex items-center justify-center rounded-full text-white text-sm  ">
+                {cartItems.length}
+              </div>
+            </div>
+          </div>
+        </ul>
+      ) : null}
     </div>
   );
 };
